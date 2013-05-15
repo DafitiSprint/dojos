@@ -1,0 +1,9 @@
+Objetivo do Dojo de hoje é criar um classe que resolva Expressões Numéricas:
+
+Ex01: 1+3+2 (Resultado: 6)
+Ex02: 1+3*2 (Resultado: 7)
+Ex03: (1+3)*2 (Resultado: 8)
+Ex04: 4*[(1+3)*2] (Resultado: 32)
+Ex05: {4*[(1+3)*2]+4}*2 (Resultado: 72)
+
+Elas deverão entrar como string, e retornar o valor.
