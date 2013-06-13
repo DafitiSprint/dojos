@@ -1,30 +1,96 @@
 <?php
 
-class Primo {
-	
-	
+class Primo
+{
 
-	public function getFatoresPrimos($valor) {
+    const START_ITERATOR = 2;
 
-		$numPrimos = array();
-		$i = 2;
+    /**
+     * @var int
+     */
+    private $init;
 
-		while ($valor != 1) {
-			if ($valor % $i == 0) {
-				$valor = $valor / $i;
-				$numPrimos[] = $i;
-			} else {
-				$i++;
-			}
+    /**
+     * @var int
+     */
+    private $valor;
 
-			if(($i * $i) > $valor){
-				$numPrimos[] = $valor;
-				break;
-			}
-		}
+    /**
+     * @var bool
+     */
+    private $isDivisibleOnlyByIitself;
 
-		return $numPrimos;
-	}
+    /**
+     * @var array
+     */
+    private $fatores = array();
 
+    public function __construct()
+    {
+        $this->init = self::START_ITERATOR;
+        $this->isDivisibleOnlyByIitself = false;
+    }
 
+    /**
+     * @param $valor
+     * @return array
+     */
+    public function getFatoresPrimos($valor) 
+    {
+        $this->valor = $valor;
+        while ($this->valor != 1 && !$this->isDivisibleOnlyByIitself) {
+            $this->defineNextIterator();
+            $this->isDivisibleOnlyByIitself = $this->applyDivisibleOnlyByIitselfRule();
+        }
+        return $this->fatores;
+    }
+
+    private function applyDivisibleOnlyByIitselfRule()
+    {
+        if ($this->needToContinue($this->init, $this->valor)) {
+            $this->fatores[] = $this->valor;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $iterator
+     * @param $valor
+     * @return bool
+     */
+    private function needToContinue($iterator, $valor)
+    {
+        return (($iterator * $iterator) > $valor);
+    }
+
+    private function defineNextIterator()
+    {
+        if (!$this->addFator()) {
+            $this->init++;
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    private function addFator()
+    {
+        if ($this->isDivible($this->valor, $this->init)) {
+            $this->valor = $this->valor / $this->init;
+            $this->fatores[] = $this->init;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param $valor
+     * @param $divisor
+     * @return bool
+     */
+    private function isDivible($valor, $divisor)
+    {
+        return ($valor % $divisor == 0);
+    }
 }
