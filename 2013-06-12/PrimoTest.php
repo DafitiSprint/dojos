@@ -6,17 +6,17 @@ class PrimoTest extends PHPUnit_Framework_TestCase {
 	
 	/**
 	*
-	* @dataProvider providerforGetFatoresPrimos
+	* @dataProvider providerFatoresPrimos
 	*/
-	public function testGetFatoresPrimosWithDataProvider($number, $expected) {
+	public function testFatoresPrimos($numero, $esperado) {
 		$primo = new Primo();
 
-		$result = $primo->getFatoresPrimos($number);
+		$resultado = $primo->fatoresPrimos($numero);
 
-		$this->assertEquals($expected, $result);
+		$this->assertEquals($esperado, $resultado);
 	}
 
-	public static function providerforGetFatoresPrimos()
+	public static function providerFatoresPrimos()
 	{
 		return array(
 			array(5, array(5)),

@@ -3,12 +3,12 @@
 class Primo
 {
 
-    const START_ITERATOR = 2;
+    const ITERADOR_INICIAL = 2;
 
     /**
      * @var int
      */
-    private $init;
+    private $inicial;
 
     /**
      * @var int
@@ -18,7 +18,7 @@ class Primo
     /**
      * @var bool
      */
-    private $isDivisibleOnlyByIitself;
+    private $numeroPrimo;
 
     /**
      * @var array
@@ -27,27 +27,27 @@ class Primo
 
     public function __construct()
     {
-        $this->init = self::START_ITERATOR;
-        $this->isDivisibleOnlyByIitself = false;
+        $this->inicial = self::ITERADOR_INICIAL;
+        $this->numeroPrimo = false;
     }
 
     /**
      * @param $valor
      * @return array
      */
-    public function getFatoresPrimos($valor) 
+    public function fatoresPrimos($valor) 
     {
         $this->valor = $valor;
-        while ($this->valor != 1 && !$this->isDivisibleOnlyByIitself) {
-            $this->defineNextIterator();
-            $this->isDivisibleOnlyByIitself = $this->applyDivisibleOnlyByIitselfRule();
+        while ($this->valor != 1 && !$this->numeroPrimo) {
+            $this->defineProximoIterador();
+            $this->numeroPrimo = $this->aplicaRegraPrimo();
         }
         return $this->fatores;
     }
 
-    private function applyDivisibleOnlyByIitselfRule()
+    private function aplicaRegraPrimo()
     {
-        if ($this->needToContinue($this->init, $this->valor)) {
+        if ($this->precisaContinuar($this->inicial, $this->valor)) {
             $this->fatores[] = $this->valor;
             return true;
         }
@@ -59,26 +59,26 @@ class Primo
      * @param $valor
      * @return bool
      */
-    private function needToContinue($iterator, $valor)
+    private function precisaContinuar($iterador, $valor)
     {
-        return (($iterator * $iterator) > $valor);
+        return (($iterador * $iterador) > $valor);
     }
 
-    private function defineNextIterator()
+    private function defineProximoIterador()
     {
-        if (!$this->addFator()) {
-            $this->init++;
+        if (!$this->adicionaFator()) {
+            $this->inicial++;
         }
     }
 
     /**
      * @return bool
      */
-    private function addFator()
+    private function adicionaFator()
     {
-        if ($this->isDivible($this->valor, $this->init)) {
-            $this->valor = $this->valor / $this->init;
-            $this->fatores[] = $this->init;
+        if ($this->divisivel($this->valor, $this->inicial)) {
+            $this->valor = $this->valor / $this->inicial;
+            $this->fatores[] = $this->inicial;
             return true;
         }
         return false;
@@ -89,7 +89,7 @@ class Primo
      * @param $divisor
      * @return bool
      */
-    private function isDivible($valor, $divisor)
+    private function divisivel($valor, $divisor)
     {
         return ($valor % $divisor == 0);
     }
