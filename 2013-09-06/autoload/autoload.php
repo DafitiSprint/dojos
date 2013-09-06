@@ -8,9 +8,11 @@ set_include_path(
     implode(PATH_SEPARATOR, $includePaths)
 );
 
+spl_autoload_extensions('.php5,.php');
 spl_autoload_register('loader', true);
 
 function loader($className) {
-    echo "\n\nCarregando classse " . $className . ".php\n";
-    include_once $className . ".php";
+    $className = str_replace("\\", DIRECTORY_SEPARATOR, $className);
+    echo "\n\nCarregando classse " . $className . ".\n";
+    include_once $className . ".php5";
 }
