@@ -3,9 +3,9 @@
 class BibliographicName
 {
     /**
-     * @var string
+     * @var array
      */
-    public $parsedName = "";
+    private $nameParts = array();
 
     public static $inheritedNames = array(
         "Filho", "Filha", "Neto", "Neta", "Sobrinho", "Sobrinha", "Junior"
@@ -17,26 +17,55 @@ class BibliographicName
 
     public function parse($name)
     {
-        $name = ucwords($name);
-        $nameParts = explode(' ', $name);
+        $this->setNameParts($name);
+        $surname = $this->getSurname();
+        $surname = $this->parseInheritedNames($surname);
 
-        $surname = $nameParts[count($nameParts)-1];
-        array_pop($nameParts);
+        $this->appendSurnameToUpper($surname);
+        $this->parseLowerCaseParts();
+        return implode(' ', $this->nameParts);
+    }
+
+    private function setNameParts($name)
+    {
+        $name = ucwords($name);
+        $this->nameParts = explode(' ', $name);
+
+        return $this->nameParts;
+    }
+
+    private function getSurname()
+    {
+        $surname = $this->nameParts[count($this->nameParts)-1];
+        array_pop($this->nameParts);
+
+        return $surname;
+    }
+
+    private function parseInheritedNames($surname)
+    {
+        $returnedSurname = $surname;
 
         if (in_array($surname, self::$inheritedNames)) {
-            $surname = $nameParts[count($nameParts)-1] . " " . $surname;
-            array_pop($nameParts);
+            $returnedSurname = $this->nameParts[count($this->nameParts)-1] . " " . $surname;
+            array_pop($this->nameParts);
         }
 
-        $surname = strtoupper($surname) . ",";
-        array_unshift($nameParts, $surname);
+        return $returnedSurname;
+    }
 
-        foreach ($nameParts as $key => $namePart) {
+    private function appendSurnameToUpper($surname)
+    {
+        $surnameUpper = strtoupper($surname) . ",";
+        array_unshift($this->nameParts, $surnameUpper);
+    }
+
+    private function parseLowerCaseParts()
+    {
+        foreach ($this->nameParts as $key => $namePart) {
             if (in_array($namePart, self::$lowerCase)) {
-                $nameParts[$key] = strtolower($namePart);
+                $this->nameParts[$key] = strtolower($namePart);
             }
         }
-
-        return implode(' ', $nameParts);
     }
 }
