@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Responsive Web Design and mobile</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Cesar Riello">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/style.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>RWD + M</h1>
+					<h3>Responsive Web Design and Mobile</h3>
+					<p>
+						<small>Created by <a href="http://czare.com">Czare Riello</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Responsive Web Design</h2>
+					<p>
+						Responsive Web Design é um conceito. Apresentar a informação de forma acessível e confortável para diversos dispositivos. Muitos sites restringem o conceito a telas de diferentes tamanhos, mas o conceito é muito mais abrangente.
+					</p>
+
+				</section>				
+
+				<!-- Example of nested vertical slides -->
+				<section>
+
+					<section data-markdown>
+						<script type="text/template">
+							## Media Queries
+
+							Media Queries é a atualização dos Media Types. São consultas envolvendo características da media.
+
+
+							```
+							@media tv and (min-width: 700px) and (orientation: landscape) { ... }
+
+							<link rel="stylesheet" href="estilo.css" media="all and (not color)" />
+
+							var mq = window.matchMedia( "(min-width:480px)" );
+
+							```
+						</script>
+					</section>
+
+					<section>
+						<h2>Media Queries: Type</h2>
+						<ul>
+							<li><strong class="green">all</strong> &ndash; todos os dispositivos</li>
+							<li><strong class="">aural</strong> &ndash; sintetizadores de voz</li>
+							<li><strong class="">braille</strong> &ndash; leitores de Braille</li>
+							<li><strong class="">embossed</strong> &ndash; impressoras de Braille</li>
+							<li><strong class="">handheld</strong> &ndash; celulares com telas pequenas</li>
+							<li><strong class="green">print</strong> &ndash; impressoras convencionais</li>
+							<li><strong class="">projection</strong> &ndash; apresentações de slides</li>
+							<li><strong class="green">screen</strong> &ndash; monitores coloridas</li>
+							<li><strong class="">tty</strong> &ndash; teleimpressores e terminais</li>
+							<li class=""><strong class="last-child">tv</strong> &ndash; televisores</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Media Queries: features</h2>
+						<br>
+						<h3>Dimensões</h3>
+						<ul>
+							<li>width (max-width: 799px)</li>
+							<li>height (max-height: 799px)<br></li>
+							<li>device-width (max-device-width: 799px)</li>
+							<li>device-height (max-device-height: 799px)<br></li>
+							<li>aspect-ratio (min-aspect-ratio: 1/1)<br></li>
+							<li>device-aspect-ratio (device-aspect-ratio: 16/9)<br></li>
+							<li>orientation (orientation: portrait)<br></li>
+							<li>resolution (min-resolution: 192dpi) (min-resolution: 2dppx)<br></li>
+							<li>device-pixel-ratio (min-device-pixel-ratio: 2)<br></li>
+						</ul>
+					</section>					
+
+					<section>
+						<h2>Media Queries: features</h2>
+						<br>
+						<h3>Cor</h3>
+						<ul>
+							<li>color (min-color: 4)</li>
+							<li>color-index (min-color-index: 256)</li>
+							<li>monochrome (monochrome)</li>
+						</ul>
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h2>Considerações para o celular</h2>
+						<ul>
+							<li>A tela é pequena</li>
+							<li>O dedo não é um mouse</li>
+							<li>Nosso 3G não é banda larga</li>
+							<li>O input de dados é difícil</li>
+						</ul>
+					</section>
+
+					<section data-state="customevent">
+						<h2>Meta tag Viewport</h2>
+						<p>
+							Não bloqueie o Zoom.
+						</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<!-- como irritar seu usuário -->
+<meta name="viewport" 
+   content="width=device-width,user-scalable=no">
+
+<meta name="viewport" 
+   content="width=device-width, 
+            minimum-scale=1,maximum-scale=1">
+
+<!-- não restringir o zoom -->
+<meta name="viewport" 
+   content="width=device-width, initial-scale=1">
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Mais considerações</h2>
+						<p>Não use :hover</p>
+						<p>Use Botões grandes <br><small>(A Apple recomenda um tamanho minimo de 44px)</small></p>
+						<p>Hot Zones </p>
+						<p><img width="70%" src="img/hotzones.png" border="0" ></p>
+						
+
+					</section>			
+
+					<section>
+						<h2>E ainda mais considerações</h2>
+						<p>evitar display: none</p>
+						<p>evitar position: fixed</p>
+						<p>não usar Lightbox</p>
+						<p>não usar Flash, Java ou Silverlight</p>					
+
+					</section>
+
+					<section>
+						<h2>Melhorando os inputs no celular</h2>
+
+    					<p>Labels no topo ou dentro</p>
+    					<p>Opção mostrar password</p>
+    					<p>Usar Apis (geolocation, getUserMedia etc)</p>
+    					<p>Menos campos, óbvio</p>
+						<p>Forms de html5</p>
+						<p><img width="100%" src="img/inputs.png" border="0" ></p>
+
+					</section>						
+
+					<section>
+						<h2>Fast Buttons</h2>
+						<p>No celular o navegador espera uns 300ms antes de disparar o clique</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+$('a').tap(function(event){
+    location.href = this.href;
+    event.preventDefault();
+});
+						</code></pre>
+					</section>	
+
+				</section>
+
+				<section>
+					<h2>Imagens Responsivas</h2>
+					<ul><li><a title="Responsive Images" href="http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing/">Responsive images</a> </li><li><a title="Adaptive Images" href="http://adaptive-images.com/">Adaptive Images</a></li><li><a title="HiSRC" href="https://github.com/teleject/hisrc">HiSRC</a></li><li><a title="Picturefill" href="https://github.com/scottjehl/picturefill">Picturefill</a></li><li><a title="Image Enhance" href="https://github.com/joshje/Responsive-Enhance">Responsive Enhance</a></li><li><a title="Sencha.IO" href="http://www.sencha.com/products/io">Sencha.IO</a></li><li><a title="rwdImages" href="https://github.com/stowball/jQuery-rwdImages">rwdImages</a></li><li><a title="Foresight.js" href="https://github.com/adamdbradley/foresight.js">Foresight.js</a></li></ul>
+
+				</section>
+
+				<section>
+					<h2>SEO</h2>
+					<p>Na Dafiti ainda vamos ter 2 versões</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+<!-- na página Desktop coloque: -->
+<link rel="alternate" href="http://m.dafiti.com.br/marcas" 
+
+media="only screen and (max-width: 700px)">
+
+<!-- na página Mobile coloque: -->
+<link rel="canonical" href="http://www.dafiti.com.br/marcas">
+						</code></pre>
+					
+				</section>
+
+
+				<section>
+					<h2>Breakpoints</h2>
+					<ul>
+						<li><strong class="last-child">320 pixels</strong>&nbsp;- Smartphones retrato.</li>
+						<li><strong class="last-child">480 pixels</strong>&nbsp;- Smartphones paisagem.</li>
+						<li><strong class="last-child">600 pixels</strong>&nbsp;- Tablets pequenos. Ex: Amazon Kindle (600×800)</li>
+						<li><strong class="last-child">768 pixels</strong>&nbsp;- Tablets maiores retrato. Ex: iPad (768×1024)</li>
+						<li><strong class="last-child">1024 pixels</strong>&nbsp;- Tablets maiores paisagem, monitores antigos.</li>
+						<li class="last-child"><strong class="last-child">1200 pixels</strong>&nbsp;- Monitores wide.</li>
+					</ul>
+					<p><img width="100%" src="img/responsive-templates.jpg" ></p>
+				</section>				
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Cesar Riello</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
