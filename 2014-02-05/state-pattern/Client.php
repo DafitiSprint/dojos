@@ -7,7 +7,7 @@ class Client
 {
     public function main()
     {
-        $piece = new Piece(new StateOne()); //Starts on One
+        $piece = new Piece(new StateTwo()); //Starts on One
         $piece->moveDown(); //Goes to Three
         $piece->moveRight(); //Goes to Four
         $piece->moveUp(); //Goes to Two
