@@ -1,0 +1,41 @@
+Dicas e macetes para trabalhar com Linux.
+
+Shell:
+    - Bash
+    - Zsh - Oh-My-Zsh
+
+Terminal:
+    - Terminais <ctrl><alt><f1> - <f6> (<f7> é o ambiente gráfico, em geral)
+    - <ctrl><u> - apaga a linha toda
+    - <alt><.> - cola o último parâmetro do último comando
+    - !! - Executa novamente o último comando (sudo !!)
+    - <ctrl><r> Pesquisa no histórico
+
+Aptitude:
+    - search <name>
+    - install <name>
+    - remove <name>
+    - show <name>
+
+Dpkg
+    - dpkg -L <name> (Lista o conteúdo de um pacote instalado)
+    - dpkg-reconfigure <name>
+
+Find:
+    - find /path -name name
+    - find . -name "*.txt" (Procura os arquivos .txt no diretório atual)
+    - find . -iname "*dafiti*" (Procura documentos com dafiti no nome, ignora a caixa)
+
+Seek and destroy:
+    - find . -name "*.swp" -exec rm {} \; (Procura e apaga os arquivos .swp)
+
+X:
+    - Selecionar e usar a roda do mouse para colar
+    - xkill
+
+General:
+    - xdiskusage .
+    - free - uso de memória
+    - df - disk free space
+    - mount
+    - sudo su -, e usar sudo como root...
