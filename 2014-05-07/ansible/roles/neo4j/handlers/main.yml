@@ -1,0 +1,5 @@
+---
+- name: Neo4j - Stop
+  service: name=neo4j-service state=stopped
+- name: Neo4j - Start
+  service: name=neo4j-service state=started

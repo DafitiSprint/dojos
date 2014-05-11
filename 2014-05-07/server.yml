@@ -1,0 +1,11 @@
+---
+- name: Install Graph Database development environment
+  hosts: all
+  sudo: True
+  vars:
+    doc_root: "/var/www/graphdb"
+  roles:
+    - common
+    - neo4j
+    - php
+    - composer
