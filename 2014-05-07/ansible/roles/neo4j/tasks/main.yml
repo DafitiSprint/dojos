@@ -1,0 +1,11 @@
+---
+- name: Neo4j - Add Key
+  apt_key: url=http://debian.neo4j.org/neotechnology.gpg.key state=present
+- name: Neo4j - Add Repository
+  apt_repository: repo='deb http://debian.neo4j.org/repo stable/' state=present update_cache=yes
+- name: Neo4j - Install
+  apt: pkg=neo4j state=installed
+  notify: Neo4j - Stop
+- name: Neo4j - Set service configuration
+  copy: src=server.properties dest=/etc/neo4j/neo4j-server.properties owner=root
+  notify: Neo4j - Start

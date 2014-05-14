@@ -1,0 +1,13 @@
+{
+    "name": "dafitisprint/dojos",
+    "description": "Graph Database",
+    "require": {
+        "everyman/neo4jphp": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Fábio Ribeiro",
+            "email": "fabiorphp@gmail.com"
+        }
+    ]
+}

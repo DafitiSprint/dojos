@@ -1,0 +1,13 @@
+---
+- name: Common - Create project folder
+  file: path=$doc_root state=directory
+- name: Common - Update repository
+  apt: update_cache=yes
+- name: Common - Install
+  apt: pkg=$item state=latest
+  with_items:
+    - vim
+    - curl
+    - python-apt
+    - python-pycurl
+    - git
