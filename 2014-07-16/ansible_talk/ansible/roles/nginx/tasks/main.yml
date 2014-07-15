@@ -1,0 +1,29 @@
+---
+- name: Install
+  apt: pkg=nginx state=latest
+
+- name: Check default configuration
+  shell: test -f {{ nginx.folder }}sites-enabled/default && echo "yes" || echo "no"
+  register: default_exists
+
+- name: Remove default configuration
+  command: rm {{ nginx.folder }}sites-enabled/default
+  when: default_exists.stdout == "yes"
+
+- name: Create vhost folder
+  file: >
+    path=/sites/www/{{ nginx.server_name }}
+    state=directory
+
+- name: Set vhost configuration
+  template: >
+    src=app.conf
+    dest={{ nginx.folder }}sites-available/{{ nginx.server_name }}
+
+- name: Apply vhost configuration
+  file: >
+    src={{ nginx.folder }}sites-available/{{ nginx.server_name }}
+    dest={{ nginx.folder }}sites-enabled/{{ nginx.server_name }}
+    state=link
+  notify:
+    - nginx restart
