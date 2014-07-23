@@ -1,0 +1,10 @@
+---
+- name: Update Repositories
+  apt: update-cache=yes
+
+- name: Install Basic Packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - vim
+    - git
+    - curl

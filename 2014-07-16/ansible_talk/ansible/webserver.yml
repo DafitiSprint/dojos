@@ -1,0 +1,10 @@
+---
+- hosts: webserver
+  sudo: true
+  vars:
+    nginx:
+      folder: "/etc/nginx/"
+      server_name: "{{ server_name }}"
+  roles:
+    - common
+    - nginx

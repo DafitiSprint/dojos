@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  server_name = "ansible_talk.dev"
+
+  config.vm.box = "precise64"
+  config.vm.network "private_network", ip: "192.168.66.66"
+  config.vm.synced_folder "./", "/sites/www/#{server_name}", id: "vagrant-root", :nfs => false
+
+  config.ssh.forward_agent = true
+
+  config.vm.provider :virtualbox do |vb|
+    vb.customize [
+      "modifyvm", :id,
+      "--name", "Ansible Talk",
+      "--memory", 512,
+      "--natdnshostresolver1", "on"
+    ]
+  end
+
+  config.vm.provision :ansible do |ab|
+    ab.playbook = "ansible/playbook.yml"
+
+    ab.groups = {
+      "webserver"  => ["default"]
+    }
+#
+#    ab.extra_vars = {
+#      server_name: "#{server_name}"
+#    }
+#
+#    ab.verbose = "vvvv"
+  end
+end

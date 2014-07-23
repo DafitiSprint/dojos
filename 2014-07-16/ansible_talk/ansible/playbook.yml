@@ -1,0 +1,13 @@
+---
+- hosts: webserver
+  sudo: true
+  tasks:
+    - name: Update server packages
+      apt: update-cache=yes
+    - name: Install Nginx
+      apt: pkg=nginx state=present
+      notify:
+        - restart nginx
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
