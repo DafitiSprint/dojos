@@ -3,7 +3,7 @@
 class Developer implements DeveloperFuncionalities
 {
     
-    public function ImplementFunctionalities(){
+    public function implementFunctionalities(){
         echo "Functionalities";
     }
 }
