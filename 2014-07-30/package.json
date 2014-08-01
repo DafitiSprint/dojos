@@ -1,0 +1,7 @@
+{
+	"Name": "Node WebSocket Server",
+	"Author": "Luiz Guilherme",
+	"Dependencies": {
+		"ws":"latest"
+	}
+}
