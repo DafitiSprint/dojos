@@ -96,6 +96,28 @@ class DogTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals($expect, $result);
     }
+   
+    public function testShouldChooseOnlyTheFavorite()
+    {
 
+        $priority = array(
+            'Balsamao',
+            'Fernando',
+            'Evaldo',
+            'Tagliati',
+        );
+
+        $dog = new Dog($priority);
+
+        $availablePeople = array(
+            'Fernando',
+            'Balsamao'
+        );
+
+        $result = $dog->chooseFavoritePerson($availablePeople);
+        $expect = "Not Found";
+
+        $this->assertEquals($expect, $result);
+    }
 
 }
