@@ -16,4 +16,11 @@ Test.with_handler(custom_handler) do
 
   # Using @time macro to see how long a function takes
   @time println("This takes almost no time at all")
+
+  no_switch, switch = MontyHall.simulate(2, 1)
+  @test no_switch == 0.5
+  @test switch == 0.5 
+
+  #@test_approx_eq_eps no_switch 0.33 0.01
+  #@test_approx_eq_eps switch 0.67 0.01
 end
