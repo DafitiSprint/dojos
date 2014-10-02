@@ -1,0 +1,5 @@
+_sut.o
+runner
+runner.o
+sut
+sut.o
