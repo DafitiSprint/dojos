@@ -40,7 +40,7 @@ class Detetive
                 continue;
             }
 
-            if ($lowest["count"] < $value) {
+            if ($lowest["count"] > $value) {
                 $lowest["count"] = $value;
                 $lowest["item"] = $key;
 
@@ -52,7 +52,7 @@ class Detetive
             return null;
         };
 
-        return $lowest;
+        return $lowest["item"];
     }
 
 

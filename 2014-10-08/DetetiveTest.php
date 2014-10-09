@@ -22,12 +22,42 @@ class DetetiveTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals($expected, $detetive->search());    
     }
 
-    public function testShouldReturnNullIfSameLowestFrequency()
-    {    
+    /**
+     * @dataProvider providerSameLowestFrequency
+     */
+    public function testShouldReturnNullIfSameLowestFrequency($list)
+    {
         $expected = null;
-        $list = [1,2];
 
         $detetive = new Detetive($list);
         $this->assertEquals($expected, $detetive->search());
+    }
+
+    public static function providerSameLowestFrequency()
+    {
+        return [
+            [[1,2]],
+            [[1,1,2,3]],
+            [[3,1,1,2,2,2,3,3,1]],
+        ];
+    }
+
+    /**
+     * @dataProvider providerLowestItem
+     */
+    public function testShouldReturnLowestItem($expected, $list)
+    {
+        $detetive = new Detetive($list);
+        $this->assertEquals($expected, $detetive->search());
+    }
+
+    public static function providerLowestItem()
+    {
+        return [
+            [1, [1,2,2]],
+            [3, [4,1,4,2,2,1,3,7,9,7,9]],
+            [2, [2,1,4,4,1,7,9,7,9]],
+
+        ];
     }
 }
