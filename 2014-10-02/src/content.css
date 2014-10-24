@@ -1,0 +1,27 @@
+html {
+	background-color: #111;
+}
+
+body {
+	font-family: "Myriad Pro","Segoe UI",Helvetica, Arial, sans-serif;
+	color: #CCC;
+	font-size: larger;
+    padding: 15%;
+	background-color: #111;
+    font-size: 1.5em;
+}
+
+.h1 {
+    font-size: 2em;
+}
+
+.word-input {
+    width: 80%;
+    padding: 1%;
+    margin-bottom: 2%;
+}
+
+.word-correct {
+    width: 19%;
+    padding: 1%;
+}
