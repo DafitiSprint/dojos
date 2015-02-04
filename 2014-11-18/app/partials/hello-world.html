@@ -1,0 +1,10 @@
+Hello World!
+
+
+<ul class="phones">
+  <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+    <a href="#/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
+    <a href="#/hello2/{{phone.id}}">{{phone.name}}</a>
+    <p>{{phone.snippet}}</p>
+  </li>
+</ul>

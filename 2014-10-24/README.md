@@ -17,24 +17,24 @@ São literalmente a busca que está buscando. Cada string é lida como um caract
 =====================
 São grupos de caracteres para fazer casar um determinado grupo
 
-\d => Dígito decimal
-\D => Negação de \d
-\s => Caractere não imprimível
-\S => Negação de \s
-\w => Alfa numérico + underscore
-\W => Negação de \w
-\xHH => Hexadecimal, onde HH, é a o caractere ASCII
-\0ooo => Octal, onde ooo é o caractere ASCII
+* \d => Dígito decimal
+* \D => Negação de \d
+* \s => Caractere não imprimível
+* \S => Negação de \s
+* \w => Alfa numérico + underscore
+* \W => Negação de \w
+* \xHH => Hexadecimal, onde HH, é a o caractere ASCII
+* \0ooo => Octal, onde ooo é o caractere ASCII
 
-. => Qualquer caracter menos a quebra de linha
-| => Expressão "or"
-^ => Começo de uma string ou linha
-$ => Final de string ou linha
+* . => Qualquer caracter menos a quebra de linha
+* | => Expressão "or"
+* ^ => Começo de uma string ou linha
+* $ => Final de string ou linha
 
-\b => Delimitador de palavra
-\B => Desconsidera o caractere antes de ou após o delimitador de palavra
-\< => Começo de uma palavra
-\> => Final de uma palavra
+* \b => Delimitador de palavra
+* \B => Desconsidera o caractere antes de ou após o delimitador de palavra
+* \< => Começo de uma palavra
+* \> => Final de uma palavra
 
 O \ também é usado para escapar caracteres especiais
 
@@ -59,24 +59,24 @@ Ex.:
 [a-zA-Z] => Qualquer letra do alfabeto não acentuada
 [0-9] => Dígito de 0 a 9
 
-[:upper:] => Caracteres maiúsculos
-[:lower:] => Caracteres minúsculos
-[:alpha:] => Todas as letras
-[:alnum:] => Todas as letras e números
-[:digit:] => Números
-[:xdigit:] => Hexadecimal
-[:punct:] => Pontuações
-[:blank:] => Caracteres em branco
-[:space:] => Espaço ou tab
-[:cntrl:] => Caracteres control
-[:print:] => Caracteres imprimíveis e espaço
-[:word:] => Letras, dígitos e underscores
+* [:upper:] => Caracteres maiúsculos
+* [:lower:] => Caracteres minúsculos
+* [:alpha:] => Todas as letras
+* [:alnum:] => Todas as letras e números
+* [:digit:] => Números
+* [:xdigit:] => Hexadecimal
+* [:punct:] => Pontuações
+* [:blank:] => Caracteres em branco
+* [:space:] => Espaço ou tab
+* [:cntrl:] => Caracteres control
+* [:print:] => Caracteres imprimíveis e espaço
+* [:word:] => Letras, dígitos e underscores
 
 # Quantificadores
 =================
-+ => Um ou mais
-* => Zero ou mais
-? => Um caractere opcional
-{x, y} => Quantidade entre x e y
-{x} => Exatamente x ocorrências
+* + => Um ou mais
+* * => Zero ou mais
+* ? => Um caractere opcional
+* {x, y} => Quantidade entre x e y
+* {x} => Exatamente x ocorrências
 
