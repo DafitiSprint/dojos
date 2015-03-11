@@ -1,3 +1,7 @@
+## Lampadas
+
+Fonte: [dojopuzzles](http://dojopuzzles.com/problemas/exibe/lampadas-no-corredor/)
+
 ## Poker
 
 Fonte: [dojopuzzles](http://dojopuzzles.com/problemas/exibe/poker/)
