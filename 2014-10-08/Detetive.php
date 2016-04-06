@@ -1,46 +1,106 @@
 <?php
 
-class Detetive {
+class Detetive
+{
+    /**
+     * @var array
+     */
+    private $list = [];
 
-	private $list = array();
-	private $counter = [];
-	public function __construct($list = array())
-	{
-		$this->list = $list;
-	}
-	
-	public function search()
-	{
-		if (!count($this->list)) {
-			return null;
-		}
+    /**
+     * @var array
+     */
+    private $counter = [];
 
-		if (count($this->list) == 1) {
-			return $this->list[0];
-		}
+    /**
+     * @var array
+     */
+    private $lowest = [];
 
-		foreach ($this->list as $item)
-		{
-			if (!isset($this->counter[$item])) {
-				$this->counter[$item] = 1;
-			} else {
-				$this->counter[$item]++;
-			}
-		}
+    /**
+     * @param array $list
+     */
+    public function __construct(array $list)
+    {
+        $this->list = $list;
+    }
 
+    /**
+     * @return mixed|null
+     */
+    public function search()
+    {
+        if (empty($this->list)) {
 
-		$lowest = null;
-		
-		foreach($this->counter as $key => $value) {
-			if ($lowest < $value) {
-				$lowest = $key;
-			}
+            return null;
+        }
 
-			
-		}
+        if (count($this->list) == 1) {
 
-		return $lowest;
-	}
+            return reset($this->list);
+        }
 
+        $this->defineFrequencyCounter();
+        $this->defineLowest();
 
+        if ($this->hasAnotherLowest()) {
+            return null;
+        };
+
+        return $this->lowest["item"];
+    }
+
+    private function defineFrequencyCounter()
+    {
+        foreach ($this->list as $item) {
+            if (!array_key_exists($item, $this->counter)) {
+                $this->counter[$item] = 1;
+
+                continue;
+            }
+
+            $this->counter[$item]++;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    private function extractFirstItemFromFrequencyCounter()
+    {
+        $lowest = [];
+        $lowest["item"] = key($this->counter);
+        $lowest["count"] = $this->counter[$lowest["item"]];
+
+        return $lowest;
+    }
+
+    private function defineLowest()
+    {
+        $lowest = $this->extractFirstItemFromFrequencyCounter();
+
+        foreach ($this->counter as $key => $value) {
+            if ($lowest["item"] == $key) {
+
+                continue;
+            }
+
+            if ($lowest["count"] > $value) {
+                $lowest["count"] = $value;
+                $lowest["item"] = $key;
+            }
+        }
+
+        $this->lowest = $lowest;
+    }
+
+    /**
+     * @return bool
+     */
+    private function hasAnotherLowest()
+    {
+        $matches = array_keys($this->counter, $this->lowest["count"]);
+
+        return (count($matches) > 1);
+    }
 }
